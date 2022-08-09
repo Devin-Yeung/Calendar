@@ -36,6 +36,7 @@ typedef struct Calendar{
 
 // Data Operations
 void initCalendar(int year, Calendar * calendar);
+void destoryCalendar(Calendar * calendar);
 void showMonth(int month, Calendar * calendar);
 void addEvent(char* event, int month, int day, Calendar * calendar);
 void delEvent(int eventId, int month, int day, Calendar * calendar);

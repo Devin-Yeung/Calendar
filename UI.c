@@ -256,7 +256,8 @@ void delEventUI(Calendar * calendar){
                 delEvent(eventIds[i],month,day,calendar);
             }
         }
-        
+
+        free(eventIds);
         // show todays' events today
         printf("After deleting the event(s)(invalid eventId is excluded), the remaining event(s) for today are as follows:\n");
         inquireEvents(month,day,calendar);
@@ -329,7 +330,7 @@ void searchEventUI(Calendar * calendar){
         }
         int m = months[i];
         int d = days[i];
-        Event * pevent = (calendar -> months[m-1].days[d-1].head);
+        Event * pevent = (calendar -> months[m-1].days[d-1].head); //FIXME: Unknown mem access
         // advance pointer to the right place
         for(int j = 1; j < eventIds[i]; j++){
             if (pevent -> next == NULL){

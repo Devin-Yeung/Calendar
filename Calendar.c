@@ -49,6 +49,43 @@ void initCalendar(int year, Calendar * calendar){
 
 
 /**
+ * @description: destory the calendar
+ * @param {Calendar *} calendar
+ * @return {*}
+ */
+void destoryCalendar(Calendar * calendar){
+    // const int leap_daysInMonths[] = {31,29,31,30,31,30,31,31,30,31,30,31};
+    const int daysInMonths[] = {31,28,31,30,31,30,31,31,30,31,30,31};
+
+    // destory events for everyday
+    for(int i = 0; i < 12; i++){
+        for(int j = 0; j < daysInMonths[i]; j++){
+            // set pday to current day
+            Day * pday = &(calendar -> months[i].days[j]);
+            // destory events
+            Event * pevent = pday -> head;
+            while(pevent != NULL) {
+                Event * pcur = pevent;
+                pevent = pevent->next;
+                free(pcur);
+            }
+        }
+    }
+
+    // destory days
+    for(int i = 0; i < 12; i++){
+        free(calendar -> months[i].days);
+    }
+
+    // destory months 
+    free(calendar -> months);
+}
+
+
+
+
+
+/**
  * @description: show the calendar view for a given month
  * @param {int} month
  * @param {Calendar *} calendar

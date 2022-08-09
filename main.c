@@ -70,5 +70,6 @@ int main(void){
     }
     // save file when quit
     writeFile(&calendar);
+    destoryCalendar(&calendar);
     return 0;
 }
